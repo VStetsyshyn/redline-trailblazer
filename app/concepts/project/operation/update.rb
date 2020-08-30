@@ -1,5 +1,3 @@
-require './lib/macro/update.rb'
-
 class Project::Operation::Update < OperationBase
   step Macro::Permission::ServiceCall(action: 'update', model: Project, nested_model: Client)
   step Model(Project, :find_by)
