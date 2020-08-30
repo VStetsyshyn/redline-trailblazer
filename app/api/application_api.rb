@@ -10,5 +10,6 @@ class ApplicationAPI < Grape::API
   version :v1 do
     mount V1::Users
     mount V1::Microservices
+    mount V1::Projects
   end
 end
