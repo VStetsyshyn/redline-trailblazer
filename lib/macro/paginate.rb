@@ -9,7 +9,6 @@ module Macro
       offset = (page - 1) * per_page
 
       if ctx[:model].has_attribute?(:user_id)
-        binding.pry
         ctx[:model] = ctx[:model].where(user_id: ctx[:current_user].id).limit(per_page).offset(offset)
       else
         ctx[:model] = ctx[:model].limit(per_page).offset(offset)

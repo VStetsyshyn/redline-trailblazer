@@ -10,7 +10,7 @@ class Permission::Operation::Check < OperationBase
   def nested_model_check(options, params:, **)
     if options[:nested_model] && options[:resource_id]
       params[:resource_class] = options[:nested_model]
-      params[:action] = 'get'
+      params[:action] = 'show'
       Permission.where(params).exists?
     else
       true

@@ -14,7 +14,7 @@ module V1
         return result if result[:user].present?
 
         header 'Auth-Token', result[:token]
-        render result[:model], serializer: "#{result[:model].class}Serializer"
+        render result[:model], serializer: "#{result[:model].try(:klass).try(:name) || result[:model].class.name}Serializer"
       end
 
       def render_error(result)

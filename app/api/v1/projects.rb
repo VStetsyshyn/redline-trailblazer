@@ -27,6 +27,7 @@ class V1::Projects < Grape::API
 
     desc 'Destroy project'
     delete ':id' do
+      status 204
       authenticate!
       run!(Project::Operation::Destroy, params: params, current_user: current_user)
     end

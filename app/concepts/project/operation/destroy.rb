@@ -1,7 +1,7 @@
 require './lib/macro/destroy.rb'
 
 class Project::Operation::Destroy < OperationBase
-  step Macro::Permission::ServiceCall(action: 'delete', model: Project)
+  step Macro::Permission::ServiceCall(action: 'delete', model: Project, nested_model: Client)
   fail :forbidden!
   step Model(Project, :find_by, :id)
   fail :project_not_found!
