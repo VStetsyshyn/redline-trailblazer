@@ -24,7 +24,7 @@ POST  /api/v1/sign_in - Sign in User
 
 GET	 /api/v1/projects?page=number&per_page=number - List all projects
 GET	 /api/v1/projects/:id - Return specific project
-POST /api/v1/projects - Create Project
+POST   /api/v1/projects - Create Project
 PUT	 /api/v1/projects/:id - Update project
 DELETE  /api/v1/projects/:id - Destroy project
 ```
@@ -38,7 +38,7 @@ DELETE  /api/v1/projects/:id - Destroy project
 | ```Macro::Paginate``` | Provides to paginate models |
 | ```Macro::GenerateToken``` | Provides to generate JWT token 
 | ```Macro::Rollback``` | Provides raise ActiveRecord Rollback if fails |
-| ```Macro::ModelDestroy``` | Provides to destroy model |
+| ```Macro::Destroy``` | Provides to destroy model |
 ## User
 
 *Sign_up*
