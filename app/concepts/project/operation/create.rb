@@ -7,11 +7,14 @@ class Project::Operation::Create < OperationBase
   step :assign_current_user!
 
   step Wrap(::Transaction) {
+    step Subprocess(Client::Operation::Create), input: Project::Input::ClientCreate, output: Project::Output::ClientCreate
     step Contract::Build(constant: Project::Contract::Create)
     step Contract::Validate()
     step Contract::Persist()
     fail Macro::Rollback()
   }
+
+  fail :nested_model_invalid!
 
   def assign_current_user!(options, **)
     options[:model].user = options[:current_user]
@@ -19,5 +22,9 @@ class Project::Operation::Create < OperationBase
 
   def forbidden!(options, **)
     permission_error(options, 'Permission Forbidden')
+  end
+
+  def nested_model_invalid!(options, params:, **)
+    error(options, params[:errors] || options[:errors][:permission_error])
   end
 end

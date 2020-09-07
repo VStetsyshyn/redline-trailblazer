@@ -26,7 +26,7 @@ module V1
         when [:not_found_error]
           error!({ message: (result[:errors][:not_found_error]).to_s }, 404)
         else
-          error!({ message: (result['contract.default'].errors.messages || result[:errors][:default]).to_s }, 422)
+          error!({ message: (result['contract.default']&.errors&.messages || result[:errors][:default]).to_s }, 422)
         end
       end
     end

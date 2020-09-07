@@ -1,6 +1,6 @@
 class OperationBase < Trailblazer::Operation
   def error(options, message)
-    options[:errors] = { default_error: message.to_s }
+    options[:errors] = { default: message.to_s }
     false
   end
 
